@@ -6,14 +6,23 @@ public class Game {
     public int score() {
         int theScore = 0;
         for (int i = 0; i < frames.length; i++) {
+
+
+            if (frames[i] == 10) {
+                theScore += frames[i];
+                theScore += frames[i+1];
+                theScore += frames[i+2];
+                i++;
+            }
+
             if (i == frames.length-1) {
                 theScore += frames[i];
                 return theScore;
             }
+
             if (frames[i] + frames[i + 1] == 10) {
                 theScore += frames[i];
                 theScore += frames[i+1];
-                theScore += frames[i+2];
                 i++;
             } else {
                 theScore += frames[i];

@@ -31,8 +31,9 @@ public class BowlingGameTest {
         game.bowl(5);
         game.bowl(5);
         bowlMany(17, 0);
-        assertEquals(20, game.score());
+        assertEquals(15, game.score());
     }
+
     @Test
     public void testTwoSpares() {
 
@@ -42,7 +43,17 @@ public class BowlingGameTest {
         game.bowl(5);
         game.bowl(5);
         bowlMany(15, 0);
-        assertEquals(35, game.score());
+        assertEquals(25, game.score());
+    }
+
+    @Test
+    public void testOneStrike() {
+
+        game.bowl(10);
+        game.bowl(5);
+        game.bowl(5);
+        bowlMany(17, 0);
+        assertEquals(30, game.score());
     }
 
 }
