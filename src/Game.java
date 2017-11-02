@@ -1,10 +1,12 @@
 public class Game {
 
+    private int score;
+
     public int score() {
-        return 0;
+        return score;
     }
 
     public void bowl(int pins) {
-        
+        score += pins;
     }
 }
