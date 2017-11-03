@@ -1,40 +1,42 @@
 public class Game {
 
+    private int[] rolls = new int[21];
 
-    private int[] frames = new int[20];
+    private int frameIndex = 0;
 
     public int score() {
         int theScore = 0;
-        for (int i = 0; i < frames.length; i++) {
-
-
-            if (frames[i] == 10) {
-                theScore += frames[i];
-                theScore += frames[i+1];
-                theScore += frames[i+2];
-                i++;
-            }
-
-            if (i == frames.length-1) {
-                theScore += frames[i];
-                return theScore;
-            }
-
-            if (frames[i] + frames[i + 1] == 10) {
-                theScore += frames[i];
-                theScore += frames[i+1];
-                i++;
+        for (int roll = 0; roll < rolls.length; roll++) {
+            if (isStrike(frameIndex)) {
+                int strikeBonus = rolls[frameIndex + 1] + rolls[frameIndex + 2];
+                theScore += strikeBonus;
+                theScore += rolls[frameIndex];
+            } else if (isSpare(frameIndex)) {
+                theScore += rolls[frameIndex];
+                theScore += rolls[frameIndex + 1];
             } else {
-                theScore += frames[i];
+                theScore += rolls[frameIndex];
             }
+            frameIndex++;
         }
         return theScore;
     }
 
-    int bowlCounter = 0;
+    private boolean isStrike(int i) {
+        return rolls[i] == 10 && frameIndex < 9;
+    }
+
+    private boolean isSpare(int i) {
+        if (i == 0) {
+            return false;
+        }
+        return rolls[i - 1] + rolls[i] == 10;
+    }
+
+    private int bowlCounter = 0;
 
     public void bowl(int pins) {
-        frames[bowlCounter] = pins;
+        rolls[bowlCounter] = pins;
         bowlCounter++;
     }
 }
