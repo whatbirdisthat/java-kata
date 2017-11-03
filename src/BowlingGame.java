@@ -1,4 +1,4 @@
-class Game {
+class BowlingGame {
 
     private int[] rolls = new int[21];
 
