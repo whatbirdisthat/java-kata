@@ -1,19 +1,18 @@
-public class Game {
+class Game {
 
     private int[] rolls = new int[21];
 
     private int frameIndex = 0;
 
-    public int score() {
+    int score() {
         int theScore = 0;
         for (int roll = 0; roll < rolls.length; roll++) {
             if (isStrike(frameIndex)) {
-                int strikeBonus = rolls[frameIndex + 1] + rolls[frameIndex + 2];
+                int strikeBonus = rolls[frameIndex] + rolls[frameIndex + 1] + rolls[frameIndex + 2];
                 theScore += strikeBonus;
-                theScore += rolls[frameIndex];
             } else if (isSpare(frameIndex)) {
-                theScore += rolls[frameIndex];
-                theScore += rolls[frameIndex + 1];
+                int spareBonus = rolls[frameIndex] + rolls[frameIndex + 1];
+                theScore += spareBonus;
             } else {
                 theScore += rolls[frameIndex];
             }
@@ -35,7 +34,7 @@ public class Game {
 
     private int bowlCounter = 0;
 
-    public void bowl(int pins) {
+    void bowl(int pins) {
         rolls[bowlCounter] = pins;
         bowlCounter++;
     }
