@@ -1,3 +1,5 @@
+package com.github.whatbirdisthat.javakata;
+
 import org.junit.Before;
 import org.junit.Test;
 

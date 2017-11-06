@@ -1,3 +1,5 @@
+package com.github.whatbirdisthat.javakata;
+
 class BowlingGame {
 
     private int[] rolls = new int[21];
